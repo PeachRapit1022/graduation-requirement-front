@@ -1,6 +1,5 @@
 import React from 'react';
 import axios from 'axios';
-import internal from 'stream';
 
 const Step1ListItem = (props:any) => {
 
@@ -14,6 +13,7 @@ const Step1ListItem = (props:any) => {
             sub: 0
         }
     );
+    const [disabled, setDisabled] = React.useState(false);
 
     // 単位数書き換え
     const creditChange = (event:any) => {
@@ -38,7 +38,12 @@ const Step1ListItem = (props:any) => {
         await axios.post(`${baseURL}/postcresitinfo/`, state)
         .then((res) => {
             console.log(res);
+            setDisabled(true);
         })
+    }
+
+    if (disabled){
+        return null
     }
 
     return (
