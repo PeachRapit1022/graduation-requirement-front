@@ -3,66 +3,69 @@ import axios, {AxiosError} from 'axios';
 import Step1List from './step1List';
 import Step2List from './step2List';
 
-const Step1 = () => {
+const Main = () => {
 
-    const baseURL = 'http://localhost:8000'
+    const baseURL = 'http://localhost:8000';
 
+    // CSVファイル保管
     const [file, setFile] = React.useState<File|null>(null);
-    const [res1, setRes1] = React.useState<any>();
-    const [res2, setRes2] = React.useState<any>();
 
+    // レスポンス時の表示モードと内容保管
+    const [mode, setMode] = React.useState<any>(null);
+    const [info, setInfo] = React.useState<any>(null);
+
+    // CSVファイル取得
     const onChangeFile = (e: React.ChangeEvent<HTMLInputElement>) => {
         const files = e.target.files;
         if (files && files[0]) {
-            setFile(files[0])
+            setFile(files[0]);
         }
     }
 
+    // 送信ボタン・再送信ボタン動作
     const onClickSubmit = async () => {
         if (!file) {
-            return
+            return;
         }
 
-        setRes1(null);
-        setRes2(null);
+        const formData = new FormData();
+        formData.append("file", file);
 
-        const formData = new FormData()
-        formData.append("file", file)
-
+        // post実行
         await axios.post(`${baseURL}/files/`, formData)
             .then((res) => {
 
-                if (res.data[0]) {
-                    setRes1(res.data[2]);
-                    console.log(res.data[2]);
-                } else {
-                    setRes2(res.data[1]);
-                    console.log(res.data[1])
-                }
+                // レスポンスをstateに保存
+                setMode(res.data[0]);
+                setInfo(res.data[1]);
+                console.log(res.data[1]);
                                 
             })
             .catch((e: AxiosError) => {
                 console.log(e);
-            })
+            });
     }
 
-    let result1: any;
-    if (res1) {
-        result1 = (
+    // 単位情報表示変数
+    let result:any;
+    if (mode === 1) {
+        result = (
             <>
-                <Step1List res = {res1}/>
+                <Step1List res = {info}/>
                 <input type="button" disabled={!File} value="再送信" onClick={onClickSubmit}/>
             </>
-        )
-    }
-    let result2: any;
-    if (res2) {
-        result2 = (
+        );
+    } else if (mode === 2) {
+        result = (
             <>
-                <Step2List res = {res2}/>
-            </>        )
+                <Step2List res = {info}/>
+            </>
+        );
+    } else {
+        result = null;
     }
 
+    // 表示
     return (
         <div>
         <body>
@@ -71,11 +74,10 @@ const Step1 = () => {
             <input name="file" type="file" accept="" onChange={onChangeFile}/>
             <input type="button" disabled={!File} value="送信" onClick={onClickSubmit}/>
             </p>
-            {result1}
-            {result2}
+            {result}
         </body>
         </div>
     );
 }
 
-export default Step1;
+export default Main;

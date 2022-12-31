@@ -1,5 +1,5 @@
 import React from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 import Step2ListItem from './step2ListItem';
 
 const Step2List = (props:any) => {

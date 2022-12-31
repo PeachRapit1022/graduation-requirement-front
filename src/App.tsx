@@ -1,10 +1,10 @@
 import React from 'react';
-import Step1 from './items/step1';
+import Main from './items/main';
 
 const App = () => {
   return (
     <div className="App">
-      <Step1></Step1>
+      <Main></Main>
     </div>
   );
 }

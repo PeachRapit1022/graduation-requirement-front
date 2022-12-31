@@ -5,6 +5,7 @@ const Step1ListItem = (props:any) => {
 
     const baseURL = 'http://localhost:8000'
 
+    // state初期化
     const [state, setState] = React.useState(
         {
             code: props.code,
@@ -13,6 +14,7 @@ const Step1ListItem = (props:any) => {
             sub: 0
         }
     );
+    // 情報登録後は行を消すのでstateに保存
     const [disabled, setDisabled] = React.useState(false);
 
     // 単位数書き換え
@@ -33,6 +35,7 @@ const Step1ListItem = (props:any) => {
         setState((prevState) => ({ ...prevState, sub: inputValue }));
     };
 
+    // 入力された単位情報を1つずつ送信
     const unknowSubjectSubmit = async () => {
         console.log(state)
         await axios.post(`${baseURL}/postcresitinfo/`, state)
@@ -42,6 +45,7 @@ const Step1ListItem = (props:any) => {
         })
     }
 
+    // 情報登録後は非表示
     if (disabled){
         return null
     }
