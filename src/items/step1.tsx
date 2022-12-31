@@ -1,13 +1,13 @@
-import React, {useState} from 'react';
+import React from 'react';
 import axios, {AxiosError} from 'axios';
 import Step1List from './step1List';
-import { ListFormat } from 'typescript';
 
 const Step1 = () => {
 
-    const [file, setFile] = useState<File|null>(null);
-    const [res, setRes] = useState<any>();
     const baseURL = 'http://localhost:8000'
+
+    const [file, setFile] = React.useState<File|null>(null);
+    const [res, setRes] = React.useState<any>();
 
     const onChangeFile = (e: React.ChangeEvent<HTMLInputElement>) => {
         const files = e.target.files;
@@ -28,7 +28,6 @@ const Step1 = () => {
             .then((res) => {
                 //console.log(res.data[0]);
                 setRes(res.data[1]);
-                console.log(typeof(res))
             })
             .catch((e: AxiosError) => {
                 console.log(e);

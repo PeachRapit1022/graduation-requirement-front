@@ -1,6 +1,5 @@
-import React, {useState} from 'react';
+import React from 'react';
 import axios, {AxiosError} from 'axios';
-import { ListFormat } from 'typescript';
 import Step1ListItem from './step1ListItem';
 
 const Step1List = (props:any) => {

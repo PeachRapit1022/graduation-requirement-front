@@ -1,14 +1,66 @@
-import React, {useState} from 'react';
-import axios, {AxiosError} from 'axios';
+import React from 'react';
+import axios from 'axios';
+import internal from 'stream';
 
 const Step1ListItem = (props:any) => {
+
+    const baseURL = 'http://localhost:8000'
+
+    const [state, setState] = React.useState(
+        {
+            code: props.code,
+            credit: 0,
+            main: 0,
+            sub: 0
+        }
+    );
+
+    // 単位数書き換え
+    const creditChange = (event:any) => {
+        const inputValue = event.target.value;
+        setState((prevState) => ({ ...prevState, credit: inputValue }));
+    };
+
+    // メインクラス書き換え
+    const mainClassChange = (event:any) => {
+        const inputValue = event.target.value;
+        setState((prevState) => ({ ...prevState, main: inputValue }));
+    };
+
+    // サブクラス書き換え
+    const subClassChange = (event:any) => {
+        const inputValue = event.target.value;
+        setState((prevState) => ({ ...prevState, sub: inputValue }));
+    };
+
+    const unknowSubjectSubmit = async () => {
+        console.log(state)
+        await axios.post(`${baseURL}/postcresitinfo/`, state)
+        .then((res) => {
+            console.log(res);
+        })
+    }
 
     return (
         <div>
             <form>
             <span>{props.title}</span>
             <span>{props.code}</span>
-                <select name="class_main">
+                <select 
+                    name="credit"
+                    onChange={(event) => {creditChange(event)}}
+                    >
+                    <option value={0}>---</option>
+                    <option value={0.5}>0.5</option>
+                    <option value={1}>1</option>
+                    <option value={1.5}>1.5</option>
+                    <option value={2}>2</option>
+                    <option value={4}>4</option>
+                </select>
+                <select 
+                    name="class_main"
+                    onChange={(event) => {mainClassChange(event)}}
+                    >
                     <option value={0}>---</option>
                     <option value={1}>全学共通授業科目</option>
                     <option value={2}>高度教養科目</option>
@@ -16,7 +68,10 @@ const Step1ListItem = (props:any) => {
                     <option value={4}>選択必修科目(専門)</option>
                     <option value={5}>選択科目(専門)</option>
                 </select>  
-                <select name="class_sub">
+                <select 
+                    name="class_sub"
+                    onChange={(event) => {subClassChange(event)}}
+                    >
                     <option value={0}>---</option>
                     <option value={1}>共通専門基礎科目</option>
                     <option value={2}>専門基礎科目</option>
@@ -33,7 +88,7 @@ const Step1ListItem = (props:any) => {
                     <option value={13}>健康・スポーツ科学</option>
                     <option value={14}>高度教養科目</option>
                 </select>
-                <input type={'button'} value='登録'/>
+                <input type={'button'} value='登録' onClick={unknowSubjectSubmit}/>
             </form>
         </div>
     )
