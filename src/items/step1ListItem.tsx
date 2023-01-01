@@ -1,7 +1,12 @@
 import React from 'react';
 import axios from 'axios';
 
-const Step1ListItem = (props:any) => {
+type Props = {
+    title: string,
+    code: string
+}
+
+const Step1ListItem = (props:Props) => {
 
     const baseURL = 'http://localhost:8000'
 
@@ -9,28 +14,28 @@ const Step1ListItem = (props:any) => {
     const [state, setState] = React.useState(
         {
             code: props.code,
-            credit: 0,
-            main: 0,
-            sub: 0
+            credit: '0',
+            main: '0',
+            sub: '0'
         }
     );
     // 情報登録後は行を消すのでstateに保存
     const [disabled, setDisabled] = React.useState(false);
 
     // 単位数書き換え
-    const creditChange = (event:any) => {
+    const creditChange = (event:React.ChangeEvent<HTMLSelectElement>) => {
         const inputValue = event.target.value;
         setState((prevState) => ({ ...prevState, credit: inputValue }));
     };
 
     // メインクラス書き換え
-    const mainClassChange = (event:any) => {
+    const mainClassChange = (event:React.ChangeEvent<HTMLSelectElement>) => {
         const inputValue = event.target.value;
         setState((prevState) => ({ ...prevState, main: inputValue }));
     };
 
     // サブクラス書き換え
-    const subClassChange = (event:any) => {
+    const subClassChange = (event:React.ChangeEvent<HTMLSelectElement>) => {
         const inputValue = event.target.value;
         setState((prevState) => ({ ...prevState, sub: inputValue }));
     };

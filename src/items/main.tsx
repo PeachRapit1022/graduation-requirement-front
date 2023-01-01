@@ -1,5 +1,5 @@
-import React from 'react';
-import axios, {AxiosError} from 'axios';
+import React, { ReactElement } from 'react';
+import axios, {AxiosResponse,AxiosError} from 'axios';
 import Step1List from './step1List';
 import Step2List from './step2List';
 
@@ -11,8 +11,8 @@ const Main = () => {
     const [file, setFile] = React.useState<File|null>(null);
 
     // レスポンス時の表示モードと内容保管
-    const [mode, setMode] = React.useState<any>(null);
-    const [info, setInfo] = React.useState<any>(null);
+    const [mode, setMode] = React.useState<number>(0);
+    const [info, setInfo] = React.useState<AxiosResponse|null>(null);
 
     // CSVファイル取得
     const onChangeFile = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -47,7 +47,7 @@ const Main = () => {
     }
 
     // 単位情報表示変数
-    let result:any;
+    let result: ReactElement;
     if (mode === 1) {
         result = (
             <>
@@ -62,7 +62,7 @@ const Main = () => {
             </>
         );
     } else {
-        result = null;
+        result = <></>;
     }
 
     // 表示
