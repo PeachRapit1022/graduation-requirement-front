@@ -11,16 +11,20 @@ type Item = {
 const Step2List = (props:any) => {
     return (
         <div>
-            {props.res.map((item: Item) => {
-                return (
-                    <>
-                        <Step2ListItem 
-                        name1 = {item.name1}
-                        name2 = {item.name2}
-                        sum = {item.sum}
-                        />
-                    </>
-                )
+            {props.res.map((item: any) => {
+                return (<>{
+                item.map((part:any) => {
+                    return (
+                        <>
+                            <Step2ListItem 
+                            name1 = {part.カテゴリ名}
+                            name2 = {part.取得単位}
+                            sum = {part.result}
+                            />
+                        </>
+                    )
+                    
+                })}</>)
             })}
         </div>
     )

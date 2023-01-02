@@ -97,7 +97,7 @@ const Step1ListItem = (props:Props) => {
                     <option value={8}>環境系科目</option>
                     <option value={9}>基礎教養科目</option>
                     <option value={10}>総合教養科目</option>
-                    <option value={11}>高度教養科目</option>
+                    <option value={11}>外国語科目</option>
                     <option value={12}>情報科目</option>
                     <option value={13}>健康・スポーツ科学</option>
                     <option value={14}>高度教養科目</option>

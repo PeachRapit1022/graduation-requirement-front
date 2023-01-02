@@ -7,7 +7,7 @@ type Props = {
     sum: number
 }
 
-const Step2ListItem = (props:Props) => {
+const Step2ListItem = (props:any) => {
     return (
         <div>
             <span>{props.name1}</span>
