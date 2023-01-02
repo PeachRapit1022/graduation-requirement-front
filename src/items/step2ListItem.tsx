@@ -11,7 +11,9 @@ const Step2ListItem = (props:Props) => {
     return (
         <div>
             <span>{props.category}</span>
+            ,
             <span>{props.sum}</span>
+            ,
             <span>{props.result}</span>
         </div>
     )
