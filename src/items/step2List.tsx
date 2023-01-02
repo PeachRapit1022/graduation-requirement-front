@@ -3,28 +3,37 @@ import React from 'react';
 import Step2ListItem from './step2ListItem';
 
 type Item = {
-    name1: string,
-    name2: string,
-    sum: number
+    category: string,
+    sum: number,
+    result: number
 }
 
-const Step2List = (props:any) => {
+type Items = {
+    rule: string,
+    result: Item[]
+}
+
+const Step2List = (props: any) => {
+    console.log(props)
     return (
         <div>
-            {props.res.map((item: any) => {
-                return (<>{
-                item.map((part:any) => {
-                    return (
-                        <>
-                            <Step2ListItem 
-                            name1 = {part.カテゴリ名}
-                            name2 = {part.取得単位}
-                            sum = {part.result}
-                            />
-                        </>
-                    )
-                    
-                })}</>)
+            {props.res.map((items: Items) => {
+                return (
+                    <p>
+                    <div>{items.rule}</div>
+                        {items.result.map((item: Item) => {
+                            return (
+                                <>
+                                    <Step2ListItem 
+                                    category = {item.category}
+                                    sum = {item.sum}
+                                    result = {item.result}
+                                    />
+                                </>
+                            )
+                        })}
+                    </p>
+                )
             })}
         </div>
     )

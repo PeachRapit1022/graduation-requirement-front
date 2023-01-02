@@ -69,7 +69,7 @@ const Main = () => {
     return (
         <div>
         <body>
-            <h1>進級要件確認ページ</h1>
+            <h1>卒業要件確認ページ</h1>
             <p>成績表を登録する
             <input name="file" type="file" accept="" onChange={onChangeFile}/>
             <input type="button" disabled={!File} value="送信" onClick={onClickSubmit}/>
