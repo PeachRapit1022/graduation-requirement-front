@@ -56,37 +56,45 @@ const Step1ListItem = (props:Props) => {
     }
 
     return (
-        <div>
-            <form>
-            <span>{props.title}</span>
-            <span>{props.code}</span>
+        <tr>
+            <td className="border-b border-slate-100 dark:border-slate-700 p-4 pl-8 text-slate-500 dark:text-slate-400">
+                {props.title}
+            </td>
+            <td className="border-b border-slate-100 dark:border-slate-700 p-4 pl-8 text-slate-500 dark:text-slate-400">
+                {props.code}
+            </td>
+            <td className="border-b border-slate-100 dark:border-slate-700 p-4 pl-8 text-slate-500 dark:text-slate-400">
                 <select 
                     name="credit"
                     onChange={(event) => {creditChange(event)}}
                     >
-                    <option value={0}>---</option>
+                    <option selected>---</option>
                     <option value={0.5}>0.5</option>
                     <option value={1}>1</option>
                     <option value={1.5}>1.5</option>
                     <option value={2}>2</option>
                     <option value={4}>4</option>
                 </select>
+            </td>
+            <td className="border-b border-slate-100 dark:border-slate-700 p-4 pl-8 text-slate-500 dark:text-slate-400">
                 <select 
                     name="class_main"
                     onChange={(event) => {mainClassChange(event)}}
                     >
-                    <option value={0}>---</option>
+                    <option selected>---</option>
                     <option value={1}>全学共通授業科目</option>
                     <option value={2}>高度教養科目</option>
                     <option value={3}>必修科目(専門)</option>
                     <option value={4}>選択必修科目(専門)</option>
                     <option value={5}>選択科目(専門)</option>
                 </select>  
+            </td>
+            <td className="border-b border-slate-100 dark:border-slate-700 p-4 pl-8 text-slate-500 dark:text-slate-400">
                 <select 
                     name="class_sub"
                     onChange={(event) => {subClassChange(event)}}
                     >
-                    <option value={0}>---</option>
+                    <option selected>---</option>
                     <option value={1}>共通専門基礎科目</option>
                     <option value={2}>専門基礎科目</option>
                     <option value={3}>市民工学共通科目</option>
@@ -102,9 +110,16 @@ const Step1ListItem = (props:Props) => {
                     <option value={13}>健康・スポーツ科学</option>
                     <option value={14}>高度教養科目</option>
                 </select>
-                <input type={'button'} value='登録' onClick={unknowSubjectSubmit}/>
-            </form>
-        </div>
+            </td>
+            <td className="border-b border-slate-100 dark:border-slate-700 p-4 pl-8 text-slate-500 dark:text-slate-400">
+                <button 
+                    onClick={unknowSubjectSubmit}
+                    className="w-full items-center justify-center rounded-md border border-transparent bg-orange-200 px-4 text-base font-medium text-slate-500 shadow-sm hover:bg-orange-300"
+                >
+                    登録
+                </button>
+            </td>
+        </tr>
     )
 }
 

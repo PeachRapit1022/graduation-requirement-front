@@ -67,15 +67,13 @@ const Main = () => {
 
     // 表示
     return (
-        <div>
-        <body>
-            <h1>卒業要件確認ページ</h1>
+        <div className="mx-auto max-w-7xl px-4 sm:px-6">
+            <h1 className="text-3xl font-bold underline">卒業要件確認ページ</h1>
             <p>成績表を登録する
             <input name="file" type="file" accept="" onChange={onChangeFile}/>
             <input type="button" disabled={!File} value="送信" onClick={onClickSubmit}/>
             </p>
             {result}
-        </body>
         </div>
     );
 }
