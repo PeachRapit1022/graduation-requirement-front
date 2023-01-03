@@ -19,11 +19,12 @@ const Main = () => {
         const files = e.target.files;
         if (files && files[0]) {
             setFile(files[0]);
-        }
+        }    
     }
 
     // 送信ボタン・再送信ボタン動作
-    const onClickSubmit = async () => {
+    const onClickSubmit = () => {
+    
         if (!file) {
             return;
         }
@@ -32,7 +33,7 @@ const Main = () => {
         formData.append("file", file);
 
         // post実行
-        await axios.post(`${baseURL}/files/`, formData)
+        axios.post(`${baseURL}/files/`, formData)
             .then((res) => {
 
                 // レスポンスをstateに保存
@@ -52,7 +53,13 @@ const Main = () => {
         result = (
             <>
                 <Step1List res = {info}/>
-                <input type="button" disabled={!File} value="再送信" onClick={onClickSubmit}/>
+                <button
+                    className="w-full items-center justify-center rounded-md border border-transparent bg-red-600 dark:bg-red-800 px-4 py-1 mb-12 text-base font-medium text-slate-50 dark:text-slate-300 shadow-sm hover:bg-red-400 dark:hover:bg-red-600"
+                    disabled={!File}
+                    onClick={onClickSubmit}
+                >
+                    再送信
+                </button>
             </>
         );
     } else if (mode === 2) {
@@ -65,6 +72,7 @@ const Main = () => {
         result = <></>;
     }
 
+    const button = "px-4 py-2 mx-2 rounded-md bg-slate-600 dark:bg-red-800 text-slate-50 dark:text-slate-300 hover:bg-slate-500 dark:hover:bg-red-600";
     // 表示
     return (
         <div className="mx-auto max-w-7xl px-4 sm:px-6 dark:bg-slate-800">
@@ -77,12 +85,16 @@ const Main = () => {
                         神戸大学工学部市民工学科 - 2020年入学者
                     </div>
                 </div>
-                <div>
-                    <div>
-                        成績表登録
-                    </div>
-                    <input name="file" type="file" accept="" onChange={onChangeFile}/>
-                    <input type="button" disabled={!File} value="送信" onClick={onClickSubmit}/>
+                <div className="hidden items-center justify-end md:flex md:flex-1 lg:w-0">
+                    <label className={button}>
+                        成績表選択
+                        <input className="hidden" type="file" accept=".csv" onChange={onChangeFile}/>
+                    </label>
+                    <label className={button}>
+                    <input type="button" disabled={!File} value="アップロード" 
+                    onClick={onClickSubmit}
+                    />
+                    </label>
                 </div>
             </div>
             {result}

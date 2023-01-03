@@ -1,9 +1,6 @@
-import { FC, memo, useState } from "react";
-
 const Test = () => {
 
     return(
-
 
     <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <div className="flex items-center justify-between border-b-2 border-gray-100 py-6 md:justify-start md:space-x-10">
@@ -47,25 +44,7 @@ const Test = () => {
                     大学の授業
                     </td>
                     <td className="border-b border-slate-100 dark:border-slate-700 p-4 pl-8 text-slate-500 dark:text-slate-400">
-                    <select 
-                        name="class_sub"
-                        >
-                        <option value={0}>---</option>
-                        <option value={1}>共通専門基礎科目</option>
-                        <option value={2}>専門基礎科目</option>
-                        <option value={3}>市民工学共通科目</option>
-                        <option value={4}>構造工学系科目</option>
-                        <option value={5}>水工学系科目</option>
-                        <option value={6}>地盤工学系科目</option>
-                        <option value={7}>計画系科目</option>
-                        <option value={8}>環境系科目</option>
-                        <option value={9}>基礎教養科目</option>
-                        <option value={10}>総合教養科目</option>
-                        <option value={11}>外国語科目</option>
-                        <option value={12}>情報科目</option>
-                        <option value={13}>健康・スポーツ科学</option>
-                        <option value={14}>高度教養科目</option>
-                    </select>
+                    東京都渋谷区渋谷2丁目
                     </td>
                     <td className="border-b border-slate-100 dark:border-slate-700 p-4 pl-8 text-slate-500 dark:text-slate-400">
                     <button
