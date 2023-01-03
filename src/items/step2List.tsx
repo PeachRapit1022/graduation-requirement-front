@@ -1,6 +1,6 @@
 import React from 'react';
 // import axios from 'axios';
-import Step2ListItem from './step2ListItem';
+import Step2Table from './step2Table';
 
 type Item = {
     category: string,
@@ -14,25 +14,15 @@ type Items = {
 }
 
 const Step2List = (props: any) => {
-    console.log(props)
+
     return (
         <div>
             {props.res.map((items: Items) => {
                 return (
-                    <p>
-                    <div>{items.rule}</div>
-                        {items.result.map((item: Item) => {
-                            return (
-                                <>
-                                    <Step2ListItem 
-                                    category = {item.category}
-                                    sum = {item.sum}
-                                    result = {item.result}
-                                    />
-                                </>
-                            )
-                        })}
-                    </p>
+                    <Step2Table 
+                    rule = {items.rule}
+                    result = {items.result}
+                />
                 )
             })}
         </div>
