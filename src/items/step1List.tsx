@@ -11,6 +11,9 @@ type Item = {
 const Step1List = (props:any) => {
     return (
         <div className="relative rounded-xl overflow-auto">
+            <div className='my-8 border-b border-red-600 dark:border-red-500 text-red-600 dark:text-red-500'>
+                データベースに未登録の単位があります。登録してください。
+            </div>
             <div className="shadow-sm overflow-hidden my-8">
                 <table className="border-collapse table-auto w-full text-sm">
                     <Step1ListHead/>

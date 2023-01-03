@@ -67,6 +67,7 @@ const Step1ListItem = (props:Props) => {
                 <select 
                     name="credit"
                     onChange={(event) => {creditChange(event)}}
+                    className="dark:bg-slate-800"
                     >
                     <option selected>---</option>
                     <option value={0.5}>0.5</option>
@@ -80,6 +81,7 @@ const Step1ListItem = (props:Props) => {
                 <select 
                     name="class_main"
                     onChange={(event) => {mainClassChange(event)}}
+                    className="dark:bg-slate-800"
                     >
                     <option selected>---</option>
                     <option value={1}>全学共通授業科目</option>
@@ -93,6 +95,7 @@ const Step1ListItem = (props:Props) => {
                 <select 
                     name="class_sub"
                     onChange={(event) => {subClassChange(event)}}
+                    className="dark:bg-slate-800"
                     >
                     <option selected>---</option>
                     <option value={1}>共通専門基礎科目</option>
@@ -114,7 +117,7 @@ const Step1ListItem = (props:Props) => {
             <td className="border-b border-slate-100 dark:border-slate-700 p-4 pl-8 text-slate-500 dark:text-slate-400">
                 <button 
                     onClick={unknowSubjectSubmit}
-                    className="w-full items-center justify-center rounded-md border border-transparent bg-orange-200 px-4 text-base font-medium text-slate-500 shadow-sm hover:bg-orange-300"
+                    className="w-full items-center justify-center rounded-md border border-transparent bg-red-600 dark:bg-red-800 px-4 text-base font-medium text-slate-50 dark:text-slate-300 shadow-sm hover:bg-red-400 dark:hover:bg-red-600"
                 >
                     登録
                 </button>

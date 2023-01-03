@@ -67,12 +67,24 @@ const Main = () => {
 
     // 表示
     return (
-        <div className="mx-auto max-w-7xl px-4 sm:px-6">
-            <h1 className="text-3xl font-bold underline">卒業要件確認ページ</h1>
-            <p>成績表を登録する
-            <input name="file" type="file" accept="" onChange={onChangeFile}/>
-            <input type="button" disabled={!File} value="送信" onClick={onClickSubmit}/>
-            </p>
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 dark:bg-slate-800">
+            <div className="flex items-center justify-between border-b-2 border-gray-100 py-6 md:justify-start md:space-x-10">
+                <div>
+                    <div className="text-4xl font-mono h-full text-slate-500 dark:text-slate-400">
+                        Check your credits
+                    </div>
+                    <div className="text-xl font-mono h-full text-slate-500 dark:text-slate-400">
+                        神戸大学工学部市民工学科 - 2020年入学者
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        成績表登録
+                    </div>
+                    <input name="file" type="file" accept="" onChange={onChangeFile}/>
+                    <input type="button" disabled={!File} value="送信" onClick={onClickSubmit}/>
+                </div>
+            </div>
             {result}
         </div>
     );
