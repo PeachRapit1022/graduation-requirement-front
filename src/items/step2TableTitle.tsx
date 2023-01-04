@@ -15,6 +15,7 @@ const Step2TableTitle = (props:Items) => {
 
     let bg = 'bg-green-200 dark:bg-green-900';
 
+    // eslint-disable-next-line
     props.result.map((item: Item) => {            
         if (item.result !== 0) {
             bg = 'bg-red-200 dark:bg-red-900';
