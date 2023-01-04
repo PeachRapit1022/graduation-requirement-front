@@ -13,6 +13,12 @@ const Main = () => {
     // レスポンス時の表示モードと内容保管
     const [mode, setMode] = React.useState<number>(0);
     const [info, setInfo] = React.useState<AxiosResponse|null>(null);
+    const [name, setName] = React.useState<string>('');
+
+    const resetInfo = () => {
+        setMode(0);
+        setInfo(null);
+    }
 
     // CSVファイル取得
     const onChangeFile = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -39,6 +45,7 @@ const Main = () => {
                 // レスポンスをstateに保存
                 setMode(res.data[0]);
                 setInfo(res.data[1]);
+                setName(res.data[2] + 'さん');
                 console.log(res.data[1]);
                                 
             })
@@ -77,7 +84,7 @@ const Main = () => {
     return (
         <div className="mx-auto max-w-7xl px-4 sm:px-6 dark:bg-slate-800">
             <div className="flex items-center justify-between border-b-2 border-gray-100 py-6 md:justify-start md:space-x-10">
-                <div>
+                <div onClick={resetInfo}>
                     <div className="text-4xl font-mono h-full text-slate-500 dark:text-slate-400">
                         Check your credits
                     </div>
@@ -85,7 +92,10 @@ const Main = () => {
                         神戸大学工学部市民工学科 - 2020年入学者
                     </div>
                 </div>
-                <div className="hidden items-center justify-end md:flex md:flex-1 lg:w-0">
+                <div className="items-center justify-end md:flex md:flex-1 lg:w-0 h-full font-semibold text-slate-500 dark:text-slate-400">
+                    {name}
+                </div>
+                <div className="items-center justify-end md:flex md:flex-1 lg:w-0">
                     <label className={button}>
                         成績表選択
                         <input className="hidden" type="file" accept=".csv" onChange={onChangeFile}/>
