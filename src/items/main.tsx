@@ -6,8 +6,8 @@ import Step2List from './step2List';
 const Main = () => {
 
     //const baseURL = 'http://localhost:8000';
-    const baseURL = 'https://p3vwqw.deta.dev/';
-    
+    const baseURL = 'https://p3vwqw.deta.dev';
+
     // CSVファイル保管
     const [file, setFile] = React.useState<File|null>(null);
 
