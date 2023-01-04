@@ -8,7 +8,8 @@ type Props = {
 
 const Step1ListItem = (props:Props) => {
 
-    const baseURL = 'http://localhost:8000'
+    //const baseURL = 'http://localhost:8000';
+    const baseURL = 'https://p3vwqw.deta.dev/';
 
     // state初期化
     const [state, setState] = React.useState(
