@@ -1,46 +1,27 @@
-# Getting Started with Create React App
+# 卒業要件確認サイト
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+大学の成績表（CSVファイル）を読み込み、卒業要件を満たしているかをチェックする。
 
-## Available Scripts
+## 使い方
+https://graduation-requirement-front.netlify.app/
+にアクセス
 
-In the project directory, you can run:
+### 手順1
+成績表CSVファイルをアップロードする。
 
-### `npm start`
+### 手順2
+卒業要件、進級要件の各項目を満たしているかを確認。  
+満たしている場合は緑、そうでない場合は赤で表示し、直感的に確認することが可能。  
+各項目はトグルリストで表示・非表示の変更ができる。
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+<img width="1271" alt="スクリーンショット 2023-01-19 10 52 28" src="https://user-images.githubusercontent.com/64301078/213338137-5f05cb79-a47d-49ba-876c-45126b080363.png">
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
-### `npm test`
+### 手順3
+データベースに存在しない単位が入力された場合、ユーザーが単位数・カテゴリを入力することが可能。
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<img width="1295" alt="スクリーンショット 2023-01-19 10 51 58" src="https://user-images.githubusercontent.com/64301078/213338156-945ba38b-c216-4f5d-a293-b7435ca46b94.png">
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 今後追加する予定の機能
+- ユーザーが投稿した未知の単位情報を全体データベースに統合する機能
+- その単位情報を管理者が承認・却下する機能
