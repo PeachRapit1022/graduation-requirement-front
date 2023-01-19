@@ -96,15 +96,18 @@ const Main = () => {
                 <div className="items-center justify-end md:flex md:flex-1 lg:w-0 h-full font-semibold text-slate-500 dark:text-slate-400">
                     {name}
                 </div>
-                <div className="items-center justify-end md:flex md:flex-1 lg:w-0">
+                <div className="items-center justify-end md:flex md:flex-1 lg:w-0">                 
+                    <a className={button} href='https://github.com/PeachRapit1022/graduation-requirement-front'>
+                        Github
+                    </a>
                     <label className={button}>
                         成績表選択
                         <input className="hidden" type="file" accept=".csv" onChange={onChangeFile}/>
                     </label>
                     <label className={button}>
-                    <input type="button" disabled={!File} value="アップロード" 
-                    onClick={onClickSubmit}
-                    />
+                        <input type="button" disabled={!File} value="アップロード" 
+                        onClick={onClickSubmit}
+                        />
                     </label>
                 </div>
             </div>
