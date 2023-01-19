@@ -101,8 +101,8 @@ const Main = () => {
                         Github
                     </a>
                     <label className={button}>
-                        
-                        <input className="hidden" type="file" accept=".csv" value="成績表選択"
+                        成績表選択
+                        <input className="hidden" type="file" accept=".csv"
                         onChange={onChangeFile}
                         />
                     </label>
