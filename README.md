@@ -2,6 +2,12 @@
 
 大学の成績表（CSVファイル）を読み込み、卒業要件を満たしているかをチェックする。
 
+バックエンドのリポジトリはこちら↓↓  
+https://github.com/PeachRapit1022/graduation-requirement-back
+
+開発ストーリーはこちら↓↓  
+準備中...
+
 ## 使い方
 https://graduation-requirement-front.netlify.app/
 にアクセス
