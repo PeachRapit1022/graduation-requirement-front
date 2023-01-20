@@ -39,6 +39,8 @@ const Main = () => {
         const formData = new FormData();
         formData.append("file", file);
 
+        setMode(3);
+
         // post実行
         axios.post(`${baseURL}/files/`, formData)
             .then((res) => {
@@ -76,6 +78,15 @@ const Main = () => {
                 <Step2List res = {info}/>
             </>
         );
+    } else if (mode === 3) {
+        result = (
+            <div className="mx-auto spinner">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        )
     } else {
         result = <></>;
     }
