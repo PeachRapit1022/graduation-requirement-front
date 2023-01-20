@@ -10,22 +10,30 @@ const Main = () => {
 
     // CSVファイル保管
     const [file, setFile] = React.useState<File|null>(null);
+    const [fileName, setFileName] = React.useState<string>('');
 
     // レスポンス時の表示モードと内容保管
     const [mode, setMode] = React.useState<number>(0);
     const [info, setInfo] = React.useState<AxiosResponse|null>(null);
     const [name, setName] = React.useState<string>('');
 
+    // バナークリックで削除
     const resetInfo = () => {
+        setFile(null);
         setMode(0);
         setInfo(null);
+        setName('');
     }
 
     // CSVファイル取得
     const onChangeFile = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setMode(4);
+        setInfo(null);
+        setName('');
         const files = e.target.files;
         if (files && files[0]) {
             setFile(files[0]);
+            setFileName(files[0]['name'])
         }    
     }
 
@@ -86,12 +94,24 @@ const Main = () => {
                 <span></span>
                 <span></span>
             </div>
-        )
+        );
+    } else if (mode === 4){
+        result = (
+            <>
+                <div className="text-l my-2 text-center font-mono h-full text-slate-500 dark:text-slate-400">
+                    {fileName}
+                </div>
+                <label className="px-4 py-2 mx-auto max-w-xs flex justify-center font-mono rounded-md bg-slate-600 dark:bg-red-800 text-slate-50 dark:text-slate-300 hover:bg-slate-500 dark:hover:bg-red-600">
+                    <input type="button" disabled={!File} value="アップロード" 
+                    onClick={onClickSubmit}
+                    />
+                </label>
+            </>
+        );
     } else {
         result = <></>;
     }
 
-    const button = "px-4 py-2 mx-2 rounded-md bg-slate-600 dark:bg-red-800 text-slate-50 dark:text-slate-300 hover:bg-slate-500 dark:hover:bg-red-600";
     // 表示
     return (
         <div className="mx-auto max-w-7xl px-4 sm:px-6 dark:bg-slate-800">
@@ -104,22 +124,19 @@ const Main = () => {
                         神戸大学工学部市民工学科 - 2020年入学者
                     </div>
                 </div>
-                <div className="items-center justify-end md:flex md:flex-1 lg:w-0 h-full font-semibold text-slate-500 dark:text-slate-400">
+                <div className="items-center justify-end md:flex md:flex-1 lg:w-0 h-full font-mono text-slate-500 dark:text-slate-400">
                     {name}
                 </div>
                 <div className="items-center justify-end md:flex md:flex-1 lg:w-0">                 
-                    <a className={button} href='https://github.com/PeachRapit1022/graduation-requirement-front'>
+                    <a className="px-4 py-2 mx-2 rounded-md font-mono bg-slate-600 dark:bg-red-800 text-slate-50 dark:text-slate-300 hover:bg-slate-500 dark:hover:bg-red-600"
+                    href='https://github.com/PeachRapit1022/graduation-requirement-front'
+                    >
                         Github
                     </a>
-                    <label className={button}>
+                    <label className="px-4 py-2 mx-2 rounded-md font-mono bg-slate-600 dark:bg-red-800 text-slate-50 dark:text-slate-300 hover:bg-slate-500 dark:hover:bg-red-600">
                         成績表選択
                         <input className="hidden" type="file" accept=".csv"
                         onChange={onChangeFile}
-                        />
-                    </label>
-                    <label className={button}>
-                        <input type="button" disabled={!File} value="アップロード" 
-                        onClick={onClickSubmit}
                         />
                     </label>
                 </div>
