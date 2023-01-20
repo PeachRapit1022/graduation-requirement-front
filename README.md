@@ -6,7 +6,7 @@
 https://github.com/PeachRapit1022/graduation-requirement-back
 
 開発ストーリーはこちら↓↓  
-準備中...
+https://www.notion.so/f9a330e6a64e456596899c2ca1243634
 
 ## 使い方
 https://graduation-requirement-front.netlify.app/
